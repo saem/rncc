@@ -23,12 +23,16 @@ struct Turn {
     k: Node,
 }
 
-pub fn create_empty_network() -> Network {
+pub fn new() -> Network {
     return Network {
         nodes: HashSet::new(),
         links: HashSet::new(),
         turns: HashSet::new(),
     };
+}
+
+enum Operation {
+    AddNode(u32)
 }
 
 #[cfg(test)]
@@ -37,7 +41,7 @@ mod tests {
 
     #[test]
     fn empty_network_is_empty() {
-        let network = create_empty_network();
+        let network = new();
 
         assert!(network.nodes.is_empty());
         assert!(network.links.is_empty());
